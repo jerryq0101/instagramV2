@@ -17,6 +17,7 @@ contract Decentragram {
         string description; // image
         uint tipAmount;
         address payable author; // uploader
+        string authorName;
     }
 
     // image created event
@@ -26,7 +27,8 @@ contract Decentragram {
         string hash,
         string description,
         uint tipAmount,
-        address payable author
+        address payable author,
+        string authorName
     );
 
     // image tipped event

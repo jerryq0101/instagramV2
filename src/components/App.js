@@ -110,7 +110,6 @@ class App extends Component {
 
     })
 
-    this.refreshPage()
 
   }
 
