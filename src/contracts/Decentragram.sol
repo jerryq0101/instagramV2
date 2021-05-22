@@ -14,7 +14,7 @@ contract Decentragram {
     struct Image {
         uint id;
         string hash; // ipfs image hash
-        string description; // image
+        string description; // image desc
         uint tipAmount;
         address payable author; // uploader
         string authorName;
@@ -44,7 +44,7 @@ contract Decentragram {
 
     // creates images (using ipfs)
 
-    function uploadImage(string memory _imgHash, string memory _description) public {
+    function uploadImage(string memory _imgHash, string memory _description, string memory _authorName) public {
 
         // make sure there is img _imgHash
         require(bytes(_imgHash).length > 0);
@@ -60,10 +60,10 @@ contract Decentragram {
         imageCount ++;
 
         // add image to contract
-        images[imageCount] = Image(imageCount, _imgHash, _description, 0, msg.sender);
+        images[imageCount] = Image(imageCount, _imgHash, _description, 0, msg.sender, _authorName);
                                                                 // no tips yet
 
-        emit ImageCreated(imageCount, _imgHash, _description,0, msg.sender);
+        emit ImageCreated(imageCount, _imgHash, _description, 0, msg.sender, _authorName);
     }
 
 

@@ -90,7 +90,7 @@ class App extends Component {
     }
   }
 
-  uploadImage = description => {
+  uploadImage = (description, authorName) => {
     console.log("Submitting file to ipfs...")
 
     //adding file to the IPFS
@@ -104,7 +104,7 @@ class App extends Component {
 
 
       this.setState({ loading: true })
-      this.state.decentragram.methods.uploadImage(result[0].hash, description).send({ from: this.state.account }).on('transactionHash', (hash) => {
+      this.state.decentragram.methods.uploadImage(result[0].hash, description, authorName).send({ from: this.state.account }).on('transactionHash', (hash) => {
         this.setState({ loading: false })
       })
 

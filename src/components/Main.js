@@ -16,11 +16,23 @@ class Main extends Component {
               <form onSubmit = {(event) => {
                 event.preventDefault()
                 const description = this.imageDescription.value
-                this.props.uploadImage(description)
+                const authorName = this.authorName.value
+                this.props.uploadImage(description, authorName)
               }} >
                 <input type='file' accept = ".jpg, .jpeg, .png, .bmp, .gif" onChange = {this.props.captureFile} />
                 <div className = "form-group mr-2-sm-2">
                     <br></br>
+
+                    <input
+                       id = "authorName"
+                       type = "text"
+                       ref = {(input) => {this.authorName = input}}
+                       className = "form-control"
+                       placeholder = "Organization/Foundation name..."
+                       required
+
+                     />
+
                     <input
                       id = "imageDescription"
                       type = "text"
@@ -29,7 +41,10 @@ class Main extends Component {
                       placeholder = "Image Description... "
                       required
                     />
+
                 </div>
+
+
                 <button type = "submit" className = "btn btn-primary btn-block btn-lg">Upload File</button>
               </form>
 
@@ -44,7 +59,7 @@ class Main extends Component {
                             height='30'
                             src={`data:image/png;base64,${new Identicon(image.author, 30).toString()}`}
                         />
-                        <small className="text-muted">{image.author}</small>
+                        <small className="text-muted">{image.author}  <br></br>  ({image.authorName})</small>
                       </div>
                       <ul id="imageList" className="list-group list-group-flush">
                         <li className="list-group-item">
