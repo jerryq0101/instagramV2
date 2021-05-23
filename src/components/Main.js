@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Identicon from 'identicon.js';
+import MEditor from "@uiw/react-md-editor";
 
 class Main extends Component {
 
@@ -33,12 +34,14 @@ class Main extends Component {
 
                      />
 
-                    <input
+                    <textarea
                       id = "imageDescription"
                       type = "text"
                       ref = {(input) => { this.imageDescription = input }}
                       className = "form-control"
                       placeholder = "Image Description... "
+                      rows = '4'
+                      cols = '60'
                       required
                     />
 
@@ -59,8 +62,10 @@ class Main extends Component {
                             height='30'
                             src={`data:image/png;base64,${new Identicon(image.author, 30).toString()}`}
                         />
+
                         <small className="text-muted">{image.author}  <br></br>  ({image.authorName})</small>
                       </div>
+
                       <ul id="imageList" className="list-group list-group-flush">
                         <li className="list-group-item">
                           <p className="text-center"><img src={`https://ipfs.infura.io/ipfs/${image.hash}`} style={{ maxWidth: '420px'}}/></p>
@@ -68,7 +73,7 @@ class Main extends Component {
                         </li>
                         <li key={key} className="list-group-item py-2">
                           <small className="float-left mt-1 text-muted">
-                            TIPS: {window.web3.utils.fromWei(image.tipAmount.toString(), 'Ether')} ETH
+                            Donation count: {window.web3.utils.fromWei(image.tipAmount.toString(), 'Ether')} ETH
                           </small>
                           <button
                               className="btn btn-link btn-sm float-right pt-0"
@@ -79,7 +84,7 @@ class Main extends Component {
                                 this.props.tipImageOwner(event.target.name, tipAmount)
                               }}
                           >
-                            TIP 0.1 ETH
+                            Donate 0.1 eth
                           </button>
                         </li>
                       </ul>
