@@ -29,7 +29,7 @@ class Main extends Component {
                        type = "text"
                        ref = {(input) => {this.authorName = input}}
                        className = "form-control"
-                       placeholder = "Organization/Foundation name..."
+                       placeholder = "Display name"
                        required
 
                      />
@@ -39,7 +39,7 @@ class Main extends Component {
                       type = "text"
                       ref = {(input) => { this.imageDescription = input }}
                       className = "form-control"
-                      placeholder = "Image Description... "
+                      placeholder = "Description"
                       rows = '4'
                       cols = '60'
                       required

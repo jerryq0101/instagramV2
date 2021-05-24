@@ -77,6 +77,7 @@ contract Decentragram {
 
         // get image from storage
         Image memory _image = images[_id];
+
         // get author
         address payable _author = _image.author;
 
